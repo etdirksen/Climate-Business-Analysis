@@ -37,16 +37,37 @@ session = Session(engine)
 # ============================================================================
 app = Flask(__name__)
 
+
 @app.route("/")
 def welcome():
     return(
     """
-    Welcome to the Climate Analysis API!
-    Available Routes:
-    \n/api/v1.0/precipitation
-    \n/api/v1.0/stations
-    \n/api/v1.0/tobs
-    \n/api/v1.0/temp/start/end
+    <p><h3>Welcome to the Climate Analysis API!<br></h3></p>
+    
+    <p>
+        <table>
+            <tr>
+                <th>Available Routes</th>
+                <th>Content</th>
+            </tr>
+            <tr>
+                <td><a href=http://127.0.0.1:5000/api/v1.0/precipitation>/api/v1.0/precipitation</a></td>
+                <td>Precipitation info for Oahu</td>
+            </tr>
+            <tr>
+                <td><a href=http://127.0.0.1:5000/api/v1.0/stations>/api/v1.0/stations</a></td>
+                <td>List of stations</td>
+            </tr>
+            <tr>
+                <td><a href=http://127.0.0.1:5000/api/v1.0/tobs>/api/v1.0/tobs</a></td>
+                <td>Temperature observation data</td>
+            </tr>
+            <tr>
+                <td><a href=http://127.0.0.1:5000/api/v1.0/temp/start/end>/api/v1.0/temp/start_date/end_date</a></td>
+                <td>Find temperature data in a given date range</td>
+            </tr>
+        </table>
+    </p>
     """)
 
 @app.route("/api/v1.0/precipitation")
@@ -61,11 +82,14 @@ def precipitation():
     
     return jsonify(precip)
 
+
+
 @app.route("/api/v1.0/stations")
 def stations():
     results = session.query(Station.station).all()
     stations = list(np.ravel(results))
     return jsonify(stations=stations)
+
 
 @app.route("/api/v1.0/tobs")
 def temp_monthly():
@@ -73,6 +97,7 @@ def temp_monthly():
     results = session.query(Measurement.tobs).filter(Measurement.station == 'USC00519281').filter(Measurement.date >= prev_year).all()
     temps = list(np.ravel(results))
     return jsonify(temps=temps)
+
 
 @app.route("/api/v1.0/temp/<start>")
 @app.route("/api/v1.0/temp/<start>/<end>")
@@ -86,6 +111,6 @@ def stats(start=None, end=None):
     
     results = session.query(*sel).filter(Measurement.date >= start).filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
-    return jsonify(temps)
+    return jsonify(temps=temps)
 
 
