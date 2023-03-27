@@ -1,6 +1,7 @@
-# Module 9, Deliverable 3: Surf's Up Analysis
+# Climate Analysis for Business Profitability
+
 ## Overview and purpose
-The purpose of this analysis was to find weather data for the city of Oahu for our friend, W. Avy, to see if starting a surf board & ice cream business would be profitable. W. Avy wanted an analysis of the temperature and the precipitation from the weather data.
+The purpose of this analysis was to find weather data for the city of Oahu to see if starting a surf board & ice cream business would be profitable. I conducted an analysis of the temperature and the precipitation from a set of weather data.
 
 ## Results
 Here are some of the findings:
@@ -43,4 +44,4 @@ Here is what I found:
 
 ![December Extra Summary Stats](/Resources/dec_extra_desc.png)
   
-This info tells us that while the temperature remains nearly the same all year round, on average, there tends to be more precipitation in December than in June. Couple that with the minimum temperature for June also being relatively low, then business may not be as profitable at that time compared to in June.
+This info tells me that while the temperature remains nearly the same all year round, on average, there tends to be more precipitation in December than in June. Couple that with the minimum temperature for June also being relatively low, then business may not be as profitable at that time compared to in June.
